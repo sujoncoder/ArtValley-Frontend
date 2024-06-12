@@ -20,12 +20,18 @@ const Navbar = () => {
               ArtValley
             </Link>
           </div>
-          <div className="hidden md:flex md:space-x-8 md:ml-10">
+          <div className="hidden md:flex space-x-4 text-lg md:ml-10">
             <Link
               href="/"
               className="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md font-medium"
             >
               Home
+            </Link>
+            <Link
+              href="/gallery"
+              className="text-gray-600 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium"
+            >
+              Gallery
             </Link>
             <Link
               href="/about"
@@ -69,6 +75,12 @@ const Navbar = () => {
             className="text-gray-600 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium"
           >
             Home
+          </Link>
+          <Link
+            href="/gallery"
+            className="text-gray-600 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium"
+          >
+            Gallery
           </Link>
           <Link
             href="/about"
