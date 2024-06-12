@@ -50,7 +50,7 @@ const SignupPage = () => {
               placeholder="Enter your password"
             />
             <p className="text-gray-500 text-sm my-1">
-              Already account ?{" "}
+              Already have an account ?{" "}
               <Link
                 className="text-blue-500 hover:underline duration-300"
                 href="/login"
