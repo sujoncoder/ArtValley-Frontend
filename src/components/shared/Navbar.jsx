@@ -45,6 +45,12 @@ const Navbar = () => {
             >
               Contact
             </Link>
+            <Link
+              href="/dashboard"
+              className="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md font-medium"
+            >
+              Dashboard
+            </Link>
           </div>
           <Link
             href="/login"
@@ -93,6 +99,12 @@ const Navbar = () => {
             className="text-gray-600 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium"
           >
             Contact
+          </Link>
+          <Link
+            href="/dashboard"
+            className="text-gray-600 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium"
+          >
+            Dashboard
           </Link>
           <Link
             href="/login"

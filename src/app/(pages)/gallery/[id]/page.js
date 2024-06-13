@@ -19,7 +19,7 @@ const ArtDetails = ({ params }) => {
   } = art;
 
   return (
-    <div className="container mx-auto my-10">
+    <div className="px-1 sm:px-0 container mx-auto my-10">
       <div className="flex flex-col md:flex-row items-center md:items-start md:space-x-10">
         <div className="w-full md:w-1/2">
           <div className="relative w-full h-0 pb-[100%]">
