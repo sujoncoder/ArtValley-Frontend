@@ -1,14 +1,26 @@
 "use client";
 
+import { useUser } from "@/context/UserContext";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, setUser } = useUser();
+  console.log(user);
 
-  const hrefggleNavbar = () => {
+  const pathName = usePathname();
+
+  const toggleNavbar = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+    window.location.reload();
   };
 
   return (
@@ -23,46 +35,59 @@ const Navbar = () => {
           <div className="hidden md:flex space-x-4 text-lg md:ml-10">
             <Link
               href="/"
-              className="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md font-medium"
+              className={`text-gray-600 hover:text-gray-800 font-medium ${
+                pathName === "/" ? "!text-blue-500 underline" : ""
+              }`}
             >
               Home
             </Link>
             <Link
               href="/gallery"
-              className="text-gray-600 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium"
+              className={`text-gray-600 hover:text-gray-800 font-medium ${
+                pathName === "/gallery" ? "!text-blue-500 underline" : ""
+              }`}
             >
               Gallery
             </Link>
             <Link
               href="/about"
-              className="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md font-medium"
+              className={`text-gray-600 hover:text-gray-800 font-medium ${
+                pathName === "/about" ? "!text-blue-500 underline" : ""
+              }`}
             >
               About
             </Link>
             <Link
               href="/contact"
-              className="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md font-medium"
+              className={`text-gray-600 hover:text-gray-800 font-medium ${
+                pathName === "/contact" ? "!text-blue-500 underline" : ""
+              }`}
             >
               Contact
             </Link>
             <Link
               href="/dashboard"
-              className="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md font-medium"
+              className={`text-gray-600 hover:text-gray-800 font-medium ${
+                pathName === "/dashboard" ? "!text-blue-500 underline" : ""
+              }`}
             >
               Dashboard
             </Link>
           </div>
-          <Link
-            href="/login"
-            className="bg-blue-500 hover:brightness-110 duration-300 text-white px-3 py-2 rounded font-medium"
-          >
-            Login
-          </Link>
+          {!user && (
+            <Link
+              href="/login"
+              className="bg-blue-500 hover:brightness-110 duration-300 text-white px-3 py-2 rounded font-medium"
+            >
+              Login
+            </Link>
+          )}
+          <p className="text-xl">{user?.user?.name}</p>
         </div>
         <div className="flex items-center">
           <div className="-mr-2 flex md:hidden">
-            <buthrefn
-              onClick={hrefggleNavbar}
+            <button
+              onClick={toggleNavbar}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-800"
             >
               {isOpen ? (
@@ -70,7 +95,7 @@ const Navbar = () => {
               ) : (
                 <FaBars className="h-6 w-6" />
               )}
-            </buthrefn>
+            </button>
           </div>
         </div>
       </div>
