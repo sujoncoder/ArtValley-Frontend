@@ -1,6 +1,5 @@
 "use client";
 
-import { useUser } from "@/context/UserContext";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -9,7 +8,6 @@ import toast, { Toaster } from "react-hot-toast";
 const LoginPage = () => {
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
-  const { fetchUserDetails } = useUser();
 
   const router = useRouter();
 
@@ -35,12 +33,9 @@ const LoginPage = () => {
       });
 
       const data = await res.json();
-      console.log(data);
-
       if (res.ok) {
         toast.success("Sign-in successful!");
         localStorage.setItem("token", data?.user?.token);
-        fetchUserDetails();
         setTimeout(() => {
           router.push("/");
         }, 1000);

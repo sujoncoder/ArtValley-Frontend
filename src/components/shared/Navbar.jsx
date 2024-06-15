@@ -1,152 +1,63 @@
 "use client";
 
-import { useUser } from "@/context/UserContext";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
+import { GoListOrdered } from "react-icons/go";
+import { ImProfile } from "react-icons/im";
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const { user, setUser } = useUser();
-  console.log(user);
-
+const Sidebar = () => {
   const pathName = usePathname();
 
-  const toggleNavbar = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setUser(null);
-    window.location.reload();
-  };
+  const baseLinkClasses =
+    "flex items-center text-lg font-semibold duration-300 rounded p-2";
+  const activeLinkClasses = "bg-blue-500 bg-opacity-20 text-slate-700";
+  const hoverLinkClasses = "hover:bg-slate-200";
 
   return (
-    <nav className="bg-white shadow">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="text-2xl font-bold text-gray-800">
-              ArtValley
-            </Link>
-          </div>
-          <div className="hidden md:flex space-x-4 text-lg md:ml-10">
-            <Link
-              href="/"
-              className={`text-gray-600 hover:text-gray-800 font-medium ${
-                pathName === "/" ? "!text-blue-500 underline" : ""
-              }`}
-            >
-              Home
-            </Link>
-            <Link
-              href="/gallery"
-              className={`text-gray-600 hover:text-gray-800 font-medium ${
-                pathName === "/gallery" ? "!text-blue-500 underline" : ""
-              }`}
-            >
-              Gallery
-            </Link>
-            <Link
-              href="/about"
-              className={`text-gray-600 hover:text-gray-800 font-medium ${
-                pathName === "/about" ? "!text-blue-500 underline" : ""
-              }`}
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              className={`text-gray-600 hover:text-gray-800 font-medium ${
-                pathName === "/contact" ? "!text-blue-500 underline" : ""
-              }`}
-            >
-              Contact
-            </Link>
+    <div className="w-64 h-screen bg-gray-100 p-5 flex flex-col justify-between">
+      <div>
+        <Link href="/" className="text-2xl font-bold mb-10 block">
+          ArtValley
+        </Link>
+        <ul>
+          <li className="mb-5">
             <Link
               href="/dashboard"
-              className={`text-gray-600 hover:text-gray-800 font-medium ${
-                pathName === "/dashboard" ? "!text-blue-500 underline" : ""
-              }`}
+              className={`${baseLinkClasses} ${
+                pathName === "/dashboard" ? activeLinkClasses : "text-gray-700"
+              } ${hoverLinkClasses}`}
+              aria-label="Profile"
             >
-              Dashboard
+              <ImProfile className="w-8 h-8 text-slate-500" />
+              <span className="ml-3">Profile</span>
             </Link>
-          </div>
-          {!user && (
+          </li>
+          <li className="mb-5">
             <Link
-              href="/login"
-              className="bg-blue-500 hover:brightness-110 duration-300 text-white px-3 py-2 rounded font-medium"
+              href="/dashboard/user-orders"
+              className={`${baseLinkClasses} ${
+                pathName === "/dashboard/user-orders"
+                  ? activeLinkClasses
+                  : "text-gray-700"
+              } ${hoverLinkClasses}`}
+              aria-label="Orders"
             >
-              Login
+              <GoListOrdered className="w-8 h-8 text-slate-500" />
+              <span className="ml-3">Orders</span>
             </Link>
-          )}
-          <p className="text-xl">{user?.user?.name}</p>
-        </div>
-        <div className="flex items-center">
-          <div className="-mr-2 flex md:hidden">
-            <button
-              onClick={toggleNavbar}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-800"
-            >
-              {isOpen ? (
-                <FaTimes className="h-6 w-6" />
-              ) : (
-                <FaBars className="h-6 w-6" />
-              )}
-            </button>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
-      <div className={`${isOpen ? "block" : "hidden"} md:hidden`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <Link
-            href="/"
-            className="text-gray-600 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Home
-          </Link>
-          <Link
-            href="/gallery"
-            className="text-gray-600 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Gallery
-          </Link>
-          <Link
-            href="/about"
-            className="text-gray-600 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium"
-          >
-            About
-          </Link>
-          <Link
-            href="/contact"
-            className="text-gray-600 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Contact
-          </Link>
-          <Link
-            href="/dashboard"
-            className="text-gray-600 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Dashboard
-          </Link>
-          <Link
-            href="/login"
-            className="text-gray-600 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Login
-          </Link>
-          <Link
-            href="/signup"
-            className="text-gray-600 hover:text-gray-800 block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Sign Up
-          </Link>
-        </div>
-      </div>
-    </nav>
+      <Link
+        href="/sign-out"
+        className={`${baseLinkClasses} text-red-500 hover:bg-red-200`}
+      >
+        <FiLogOut className="w-8 h-8 text-red-500" />
+        <span className="ml-3">Sign-out</span>
+      </Link>
+    </div>
   );
 };
 
-export default Navbar;
+export default Sidebar;
