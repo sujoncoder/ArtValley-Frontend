@@ -2,7 +2,7 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="px-2 sm:px-0 w-full bg-slate-100 text-slate-900 py-8">
+    <footer className="px-2 sm:px-6 lg:px-8 xl:px-12 w-full bg-gray-100 text-gray-900 py-8">
       <div className="container mx-auto flex flex-wrap justify-between">
         <div className="w-full md:w-1/3 mb-4 md:mb-0">
           <h3 className="text-lg font-semibold mb-2">Company Name</h3>
@@ -39,22 +39,22 @@ const Footer = () => {
           <ul className="flex">
             <li className="mr-4">
               <a href="#">
-                <FaFacebook className="w-8 h-8 text-slate-500 hover:text-slate-600 duration-300 hover:scale-105" />
+                <FaFacebook className="w-8 h-8 text-gray-500 hover:text-gray-600 duration-300 transform hover:scale-105" />
               </a>
             </li>
             <li className="mr-4">
               <a href="#">
-                <FaTwitter className="w-8 h-8 text-slate-500 hover:text-slate-600 duration-300 hover:scale-105" />
+                <FaTwitter className="w-8 h-8 text-gray-500 hover:text-gray-600 duration-300 transform hover:scale-105" />
               </a>
             </li>
             <li className="mr-4">
               <a href="#">
-                <FaInstagram className="w-8 h-8 text-slate-500 hover:text-slate-600 duration-300 hover:scale-105" />
+                <FaInstagram className="w-8 h-8 text-gray-500 hover:text-gray-600 duration-300 transform hover:scale-105" />
               </a>
             </li>
             <li className="mr-4">
               <a href="#">
-                <FaLinkedin className="w-8 h-8 text-slate-500 hover:text-slate-600 duration-300 hover:scale-105" />
+                <FaLinkedin className="w-8 h-8 text-gray-500 hover:text-gray-600 duration-300 transform hover:scale-105" />
               </a>
             </li>
           </ul>

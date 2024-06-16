@@ -1,40 +1,51 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { GoListOrdered } from "react-icons/go";
+// import { IoPowerOutline } from "react-icons/io5";
+import Link from "next/link";
+import { RiProfileLine } from "react-icons/ri";
+import Logo from "../shared/Logo";
 
 const Sidebar = () => {
   const pathName = usePathname();
 
   return (
-    <div className="w-64 h-screen bg-gray-100 p-5">
-      <div className="text-2xl font-bold mb-10">ArtValley</div>
-      <ul>
-        <li className="mb-5">
-          <Link
-            href="/dashboard"
-            className={`flex items-center text-lg font-semibold text-gray-700 ${
-              pathName === "/dashboard"
-                ? "bg-blue-500 rounded py-2 bg-opacity-20 text-slate-700 duration-300 hover:brightness-110"
-                : ""
-            }`}
-          >
-            <span className="ml-3">Profile</span>
-          </Link>
-        </li>
-        <li className="mb-5">
-          <Link
-            href="/dashboard/user-orders"
-            className={`flex items-center text-lg font-semibold text-gray-700 ${
-              pathName === "/dashboard/user-orders"
-                ? "bg-blue-500 rounded py-2 bg-opacity-20 text-slate-700 duration-300 hover:brightness-110"
-                : ""
-            }`}
-          >
-            <span className="ml-3">Orders</span>
-          </Link>
-        </li>
-      </ul>
+    <div className="w-52 h-screen bg-slate-100 p-4">
+      <div>
+        <Logo />
+        <br />
+      </div>
+
+      <div>
+        <ul>
+          <li className="space-y-4">
+            <Link
+              href="/dashboard"
+              className={`flex justify-start space-x-4 px-2 py-2 rounded text-xl text-slate-500 items-center bg-slate-200 ${
+                pathName === "/dashboard"
+                  ? "!hover:bg-blue-200 !bg-blue-300 !text-white !duration-300"
+                  : ""
+              }`}
+            >
+              <RiProfileLine className="w-8 h-8 text-slate-400" />
+              <span>Profile</span>
+            </Link>
+
+            <Link
+              href="/dashboard/user-orders"
+              className={`flex justify-start space-x-4 px-2 py-2 rounded text-xl text-slate-500 items-center bg-slate-200 ${
+                pathName === "/dashboard/user-orders"
+                  ? "!hover:bg-blue-200 !bg-blue-300 !text-white !duration-300"
+                  : ""
+              }`}
+            >
+              <GoListOrdered className="w-8 h-8 text-slate-400" />
+              <span>Orders</span>
+            </Link>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };
