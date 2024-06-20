@@ -2,6 +2,7 @@
 
 import Footer from "@/components/shared/Footer";
 import Header from "@/components/shared/Header";
+import CartProvider from "@/context/CartContext";
 import { UserProvider } from "@/context/UserContext";
 import { Inter } from "next/font/google";
 import { usePathname } from "next/navigation";
@@ -21,9 +22,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <UserProvider>
-          {!isDashboard && <Header />}
-          {children}
-          {!isDashboard && <Footer />}
+          <CartProvider>
+            {!isDashboard && <Header />}
+            {children}
+            {!isDashboard && <Footer />}
+          </CartProvider>
         </UserProvider>
       </body>
     </html>

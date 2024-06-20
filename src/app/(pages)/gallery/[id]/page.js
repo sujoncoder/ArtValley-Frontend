@@ -1,3 +1,4 @@
+import AddToCartBtn from "@/components/shared/AddToCartBtn";
 import artsData from "@/utils/data";
 import Image from "next/image";
 
@@ -53,9 +54,7 @@ const ArtDetails = ({ params }) => {
             Stock: <span className="font-medium">{stock}</span>
           </p>
           <p className="text-lg text-gray-600 mt-4">{description}</p>
-          <button className="mt-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300">
-            Add to Cart
-          </button>
+          <AddToCartBtn item={art} />
         </div>
       </div>
     </div>

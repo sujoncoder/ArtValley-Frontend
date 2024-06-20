@@ -1,7 +1,14 @@
+"use client";
+
+import { useUser } from "@/context/UserContext";
 import allArts from "@/utils/data";
 import Image from "next/image";
 import Link from "next/link";
+import AddToCatBtn from "./shared/AddToCartBtn";
+
 const ArtGallery = () => {
+  const { user } = useUser();
+
   return (
     <div className="my-4 sm:my-10 max-w-6xl mx-auto">
       <h1 className="text-3xl font-semibold text-center my-4 sm:my-10">
@@ -38,9 +45,7 @@ const ArtGallery = () => {
             </Link>
 
             <div className="flex justify-center items-center">
-              <button className="bg-blue-500 rounded hover:brightness-110 text-white px-4 py-2 mt-1 mb-3">
-                Add to cart
-              </button>
+              <AddToCatBtn item={art} />
             </div>
           </div>
         ))}

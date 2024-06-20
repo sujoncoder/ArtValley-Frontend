@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";
 
 const Hero = () => {
@@ -14,10 +15,13 @@ const Hero = () => {
             world. Immerse yourself in a diverse collection of art pieces.
           </p>
           <div>
-            <button className="bg-blue-500 text-white px-6 py-3 rounded-md text-lg font-medium inline-flex items-center hover:bg-blue-600 duration-300">
+            <Link
+              href="/gallery"
+              className="bg-blue-500 text-white px-6 py-3 rounded-md text-lg font-medium inline-flex items-center hover:bg-blue-600 duration-300"
+            >
               Explore Now
               <FiArrowRight className="ml-2 w-5 h-5" />
-            </button>
+            </Link>
           </div>
         </div>
         <div className="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center">
