@@ -2,6 +2,7 @@
 
 import RemoveItemBtn from "@/components/cart/RemoveItemBtn";
 import { useCart } from "@/context/CartContext";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiOutlineCheck, AiOutlineShoppingCart } from "react-icons/ai";
 
@@ -86,9 +87,12 @@ const CartStore = () => {
                   ${totalPrice.toFixed(2)}
                 </p>
               </div>
-              <button className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition duration-200 flex items-center">
+              <Link
+                href="/payment"
+                className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition duration-200 flex items-center"
+              >
                 <AiOutlineCheck className="text-2xl mr-2" /> Checkout
-              </button>
+              </Link>
             </div>
           </div>
         </>

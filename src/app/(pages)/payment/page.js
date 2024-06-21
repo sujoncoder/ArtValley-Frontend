@@ -1,6 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 
-const CardForm = () => {
+const Payment = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
@@ -52,12 +53,13 @@ const CardForm = () => {
             />
           </div>
           <div className="flex space-x-4">
-            <button
+            <Link
+              href="/success"
               type="submit"
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
             >
               Add Card
-            </button>
+            </Link>
             <button
               type="button"
               className="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition"
@@ -71,4 +73,4 @@ const CardForm = () => {
   );
 };
 
-export default CardForm;
+export default Payment;
